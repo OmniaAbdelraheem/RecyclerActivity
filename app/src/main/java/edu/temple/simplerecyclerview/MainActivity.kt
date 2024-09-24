@@ -1,7 +1,8 @@
 package edu.temple.simplerecyclerview
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -9,12 +10,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO Step 1: Reference RecyclerView object
+        // Step 1: Reference RecyclerView object
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-        //TODO Step 2: Provide a LayoutManager
+        // Step 2: Provide a LayoutManager
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-
-        //TODO Step 4: Provide a RecyclerView.Adapter
+        // Step 4: Provide a RecyclerView.Adapter
+        val numbers = IntArray(50) { index -> (index + 1) }
+        recyclerView.adapter = NumberDisplayAdapter(numbers)
     }
 }
